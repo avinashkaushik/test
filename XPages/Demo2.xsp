@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.resources>
+		<xp:styleSheet href="/sample.css"></xp:styleSheet>
+	</xp:this.resources>
+	<xp:this.data>
+		<xp:dominoDocument var="document1"></xp:dominoDocument>
+	</xp:this.data>
+	<xp:div id="image1" styleClass="loading">
+
+		<xp:div id="div1" styleClass="container">
+
+			<xp:label value="Form" id="label2" styleClass="title">
+			</xp:label>
+			<xp:div id="head1" styleClass="content">
+				<xp:div styleClass="spacing">
+					<xp:label value="FirstName" id="label1"></xp:label>
+					<xp:inputText id="inputText1" required="true"
+						value="#{document1.first_name}">
+						<xp:this.validators>
+							<xp:validateLength
+								message="First name is required">
+							</xp:validateLength>
+							<xp:validateRequired
+								message="First name is required">
+							</xp:validateRequired>
+						</xp:this.validators>
+					</xp:inputText>
+				</xp:div>
+
+				<xp:div></xp:div>
+
+				<xp:div styleClass="spacing">
+					<xp:label value="LastName" id="label3"></xp:label>
+					<xp:inputText id="inputText2" required="true" value="#{document1.last_name}"></xp:inputText>
+				</xp:div>
+
+				<xp:div></xp:div>
+
+				<xp:div styleClass="spacing">
+					<xp:label value="Phone" id="label4"></xp:label>
+
+					<xp:inputText id="inputTextarea1" required="true"
+						value="#{document1.phone}">
+						<xp:this.converter>
+							<xp:convertNumber type="number"
+								integerOnly="true">
+							</xp:convertNumber>
+						</xp:this.converter>
+						<xp:this.validators>
+							<xp:validateLongRange maximum="10"></xp:validateLongRange>
+						</xp:this.validators></xp:inputText>
+				</xp:div>
+				<xp:div></xp:div>
+
+
+				<xp:div styleClass="spacing">
+					<xp:label value="Country" id="label5"></xp:label>
+					<xp:inputTextarea id="inputTextarea2"
+						required="true" value="#{document1.country}">
+					</xp:inputTextarea>
+				</xp:div>
+				<xp:div></xp:div>
+
+
+				<xp:div styleClass="spacing">
+					<xp:label value="Address" id="label6"></xp:label>
+					<xp:inputTextarea id="inputTextarea3"
+						required="true" value="#{document1.address}">
+					</xp:inputTextarea>
+				</xp:div>
+
+				<xp:div></xp:div>
+
+				<xp:div styleClass="spacing">
+					<xp:button type="submit" value="Submit"
+						styleClass="button" id="button1">
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="complete" immediate="false" save="true">
+							<xp:this.action>
+
+								<xp:actionGroup>
+									<xp:saveDocument var="document1"></xp:saveDocument>
+									<xp:openPage name="/allusers.xsp"></xp:openPage>
+								</xp:actionGroup>
+							</xp:this.action></xp:eventHandler>
+					</xp:button>
+				</xp:div>
+
+			</xp:div>
+		</xp:div>
+	</xp:div>
+</xp:view>

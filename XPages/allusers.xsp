@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:viewPanel rows="30" id="viewPanel1">
+		<xp:this.facets>
+			<xp:pager partialRefresh="true" layout="SeparatorPage Status FirstArrow Separator PreviousArrow Separator SeparatorPage Group Separator NextArrow Separator LastArrow"
+				xp:key="headerPager" id="pager1">
+			</xp:pager>
+		</xp:this.facets>
+		<xp:this.data>
+			<xp:dominoView var="view1" viewName="users"></xp:dominoView>
+		</xp:this.data>
+		<xp:viewColumn columnName="first_name" id="viewColumn1" displayAs="link" openDocAsReadonly="true" style="background-attachment:fixed">
+			<xp:viewColumnHeader value="first_name"
+				id="viewColumnHeader1">
+			</xp:viewColumnHeader>
+		<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+			<xp:this.action>
+				<xp:openPage name="/usersInfo.xsp" target="openDocument"
+					documentId="76EBA4D991C3DBAA8825804B003DF45F">
+				</xp:openPage>
+			</xp:this.action></xp:eventHandler></xp:viewColumn>
+		<xp:viewColumn columnName="last_name" id="viewColumn2">
+			<xp:viewColumnHeader value="last_name"
+				id="viewColumnHeader2">
+			</xp:viewColumnHeader>
+		</xp:viewColumn>
+	</xp:viewPanel></xp:view>
