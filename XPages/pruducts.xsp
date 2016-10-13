@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.resources>
+		<xp:styleSheet href="/sample.css"></xp:styleSheet>
+	</xp:this.resources>
+	<xp:this.data>
+		<xp:dominoDocument var="document1"></xp:dominoDocument>
+		
+	</xp:this.data>
+	<xp:div id="image1" styleClass="loading">
+
+		<xp:div id="div1" styleClass="container">
+
+			<xp:label value="Form" id="label2" styleClass="title">
+			</xp:label>
+			<xp:div id="head1" styleClass="content">
+				<xp:div styleClass="spacing">
+					<xp:label value="ProductName" id="label1"></xp:label>
+					<xp:inputText id="inputText1" required="true"
+						value="#{document1.product_name}">
+						<xp:this.validators>
+							<xp:validateLength
+								message="First name is required">
+							</xp:validateLength>
+							<xp:validateRequired
+								message="First name is required">
+							</xp:validateRequired>
+						</xp:this.validators>
+					</xp:inputText>
+				</xp:div>
+
+				<xp:div></xp:div>
+
+				<xp:div styleClass="spacing">
+					<xp:label value="ProductId" id="label3"></xp:label>
+					<xp:inputText id="inputText2" required="true"
+						value="#{document1.product_id}">
+					</xp:inputText>
+				</xp:div>
+
+				<xp:div></xp:div>
+
+				<xp:div styleClass="spacing">
+					<xp:label value="Amount" id="label4"></xp:label>
+
+					<xp:inputText id="inputTextarea1" required="true"
+						value="#{document1.amount}">
+						<xp:this.validators>
+							<xp:validateLongRange maximum="10"></xp:validateLongRange>
+						</xp:this.validators>
+					</xp:inputText>
+				</xp:div>
+				<xp:div></xp:div>
+
+
+
+
+				<xp:div styleClass="spacing">
+					<xp:button type="submit" value="Submit"
+						styleClass="button" id="button1">
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="complete" immediate="false" save="true">
+							<xp:this.action>
+
+								<xp:actionGroup>
+
+
+
+
+
+
+
+
+
+
+
+									<xp:saveDocument var="document1"></xp:saveDocument>
+
+									<xp:openPage
+										name="/productsInfo.xsp">
+									</xp:openPage>
+								</xp:actionGroup>
+							</xp:this.action>
+						</xp:eventHandler>
+					</xp:button>
+				</xp:div>
+
+			</xp:div>
+		</xp:div>
+	</xp:div>
+</xp:view>
+
